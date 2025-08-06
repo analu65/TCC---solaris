@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Home from '../screens/home';
+import Home from '../screens/Home';
 import Avisos from '../screens/Avisos';
 
 export default function App(){

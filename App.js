@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './screens/Home';
 import Avisos from './screens/Avisos';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   const BottomTab = createBottomTabNavigator();
