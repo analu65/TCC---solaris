@@ -2,6 +2,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Home from './screens/Home';
 import Avisos from './screens/Avisos';
 import { StatusBar } from 'expo-status-bar';
@@ -11,9 +12,18 @@ const BottomTab = createBottomTabNavigator();
     return(
       
         <NavigationContainer>
-            <BottomTab.Navigator>
-                <BottomTab.Screen name='Home' component={Home}></BottomTab.Screen>
-                <BottomTab.Screen name='Avisos' component={Avisos}></BottomTab.Screen>
+            <BottomTab.Navigator screenOptions={{
+            animation: 'shift',
+            tabBarActiveTintColor: '#dd6a71', //cor do texto que está ativo
+            tabBarInactiveTintColor:'#dd6a71',
+            tabBarInactiveBackgroundColor: '#ffffff',
+            tabBarActiveBackgroundColor: '#d3d3d3', //cor de fundo da aba ativa
+            tabBarLabelStyle: {
+              marginBottom: -2
+            }
+          }}>
+                <BottomTab.Screen name='Home' component={Home} options={{tabBarIcon: () => (<MaterialCommunityIcons name="home" size={20} color="#dd6a71" />), header: () => null}}></BottomTab.Screen>
+                <BottomTab.Screen name='Avisos' component={Avisos} options={{tabBarIcon: () => (<MaterialCommunityIcons name="bell" size={20} color="#dd6a71" />), header: () => null}}></BottomTab.Screen>
             </BottomTab.Navigator>
         </NavigationContainer>
     )
