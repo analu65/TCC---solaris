@@ -5,6 +5,10 @@ import { auth } from "../controller";
 
 export default function signUp({navigation}){
     return (
-
+        <View>
+            <Text>
+                isso eh o cadastro
+            </Text>
+        </View>
     );
 }
