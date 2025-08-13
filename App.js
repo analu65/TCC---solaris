@@ -1,25 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from './screens/home';
-import Avisos from './screens/avisos';
-import { NavigationContainer } from '@react-navigation/native';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Home from './screens/Home';
+import Avisos from './screens/Avisos';
+import { StatusBar } from 'expo-status-bar';
 export default function App() {
-  const BottomTab = createBottomTabNavigator();
-  return(
-      <NavigationContainer>
-          <BottomTab.Navigator screenOptions={{
+const BottomTab = createBottomTabNavigator();
+<StatusBar style="auto" />
+    return(
+      
+        <NavigationContainer>
+            <BottomTab.Navigator screenOptions={{
             animation: 'shift',
-            tabBarActiveBackgroundColor: '#d3d3d3',
-            headerShown: false
+            tabBarActiveTintColor: '#dd6a71', //cor do texto que está ativo
+            tabBarInactiveTintColor:'#dd6a71',
+            tabBarInactiveBackgroundColor: '#ffffff',
+            tabBarActiveBackgroundColor: '#d3d3d3', //cor de fundo da aba ativa
+            tabBarLabelStyle: {
+              marginBottom: -2
+            }
           }}>
-              <BottomTab.Screen name='Home' component={Home} options={{tabBarIcon: () => (<MaterialCommunityIcons name="home" size={20} color="black" />)}}></BottomTab.Screen>
-              <BottomTab.Screen name='Avisos' component={Avisos} options={{tabBarIcon: () => (<MaterialCommunityIcons name="bell" size={20} color="black" />)}}></BottomTab.Screen>
-          </BottomTab.Navigator>
-      </NavigationContainer>
-  )
+                <BottomTab.Screen name='Home' component={Home} options={{tabBarIcon: () => (<MaterialCommunityIcons name="home" size={20} color="#dd6a71" />), header: () => null}}></BottomTab.Screen>
+                <BottomTab.Screen name='Avisos' component={Avisos} options={{tabBarIcon: () => (<MaterialCommunityIcons name="bell" size={20} color="#dd6a71" />), header: () => null}}></BottomTab.Screen>
+            </BottomTab.Navigator>
+        </NavigationContainer>
+    )
 }
 
 const styles = StyleSheet.create({
