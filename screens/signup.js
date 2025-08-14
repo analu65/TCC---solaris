@@ -1,9 +1,14 @@
-import { View,StyleSheet, Text, Image, TextInput, ImageBackground, Button} from "react-native";
+import { View,StyleSheet, Text, Image, ScrollView, Switch, TextInput, ImageBackground, Button} from "react-native";
 import { useState } from "react";
+import { db, auth } from "../controller";
+import { collection, addDoc } from "firebase/firestore";
 export default function signUp({navigation}){
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
+    //outros dados abaixo
+
+    
     const signupUser = () => {
         createUserWithEmailAndPassword(auth, email, senha)
         .then((userCredential) => {
@@ -25,6 +30,10 @@ export default function signUp({navigation}){
             placeholder="Digite seu E-mail"
             value={email}
             onChangeText={setEmail}></TextInput>
+            <TextInput style={styles.input}
+            placeholder="Digite sua Senha"
+            value={senha}
+            onChangeText={setSenha}></TextInput>
         </View>
     );
 }
