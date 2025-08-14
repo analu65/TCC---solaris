@@ -1,7 +1,7 @@
 
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, cardStyleInterpolator, CardStyleInterpolators } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Home from './screens/Home';
@@ -37,7 +37,9 @@ export default function App() {
   <StatusBar style="auto" />
     return(
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+      }}>
             <Stack.Screen options={{headerShown: false}} name='Selection' component={Selection}></Stack.Screen>
             <Stack.Screen name='Login' component={Login}></Stack.Screen>
             <Stack.Screen name='signUp' component={signUp}></Stack.Screen>
