@@ -42,7 +42,7 @@ export default function App() {
       }}>
             <Stack.Screen options={{headerShown: false}} name='Selection' component={Selection}></Stack.Screen>
             <Stack.Screen name='Login' component={Login}></Stack.Screen>
-            <Stack.Screen options={{headerShown: false}} name='signUp' component={signUp}></Stack.Screen>
+            <Stack.Screen name='signUp' component={signUp}></Stack.Screen>
             <Stack.Screen options={{headerShown: false}} name = 'HomeTab' component={bottomTabs}></Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>
