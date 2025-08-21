@@ -8,12 +8,11 @@ import Home from './screens/Home';
 import Avisos from './screens/Avisos';
 import Selection from './screens/selection';
 import { StatusBar } from 'expo-status-bar';
-import signUp from './screens/signup';
+import SignUp from './screens/signup';
 import Login from './screens/login';
-function bottomTabs(){
+function BottomTabs(){
   const BottomTab = createBottomTabNavigator();
   return (
-    <NavigationContainer>
             <BottomTab.Navigator screenOptions={{
             animation: 'shift',
             tabBarActiveTintColor: '#dd6a71', //cor do texto que está ativo
@@ -27,7 +26,6 @@ function bottomTabs(){
                 <BottomTab.Screen name='Home' component={Home} options={{tabBarIcon: () => (<MaterialCommunityIcons name="home" size={20} color="#dd6a71" />), header: () => null}}></BottomTab.Screen>
                 <BottomTab.Screen name='Avisos' component={Avisos} options={{tabBarIcon: () => (<MaterialCommunityIcons name="bell" size={20} color="#dd6a71" />), header: () => null}}></BottomTab.Screen>
             </BottomTab.Navigator>
-        </NavigationContainer>
   );
 }
 
@@ -42,8 +40,8 @@ export default function App() {
       }}>
             <Stack.Screen options={{headerShown: false}} name='Selection' component={Selection}></Stack.Screen>
             <Stack.Screen name='Login' component={Login}></Stack.Screen>
-            <Stack.Screen name='signUp' component={signUp}></Stack.Screen>
-            <Stack.Screen options={{headerShown: false}} name = 'HomeTab' component={bottomTabs}></Stack.Screen>
+            <Stack.Screen name='SignUp' component={SignUp}></Stack.Screen>
+            <Stack.Screen options={{headerShown: false}} name = 'HomeTab' component={BottomTabs}></Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>
     );

@@ -5,7 +5,7 @@ import { db, auth } from "../controller";
 import { collection, addDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export default function signUp({navigation}){
+export default function SignUp({navigation}){
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [nome, setNome] = useState('');
