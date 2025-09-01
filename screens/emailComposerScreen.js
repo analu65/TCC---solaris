@@ -38,7 +38,57 @@ const EmailComposerScreen = () => {
 
         }
     };
+    const enviarEmails = async () => {
+        if (!assunto.trim() || !mensagem.trim()) {
+            Alert.alert('Atenção', 'Preencha o assunto e a mensagem');
+            return;
+        }
+        //
+        if (usuarios.length == 0){
+        Alert.alert('Atenção', 'Nenhum email encontrado no banco de dados');
+        return;
+    }
+    //confirma envio
+    Alert.alert('Confirmar envio', `Enviar email para ${totalEmails} pessoas?`, [
+        {text: 'Cancelar', style: 'cancel'}
+        {text: 'Enviar', onPress: confirmarEnvio }
+    ]);
+    };
+    const confirmarEnvio = async () => {
+        setEnviando(true);
+        try {
+            const response = await fetch('https://us-central1-tcc--solaris.cloudfunctions.net/sendBulkEmails', {method:'POST', headers: {'Content-Type': 'application/json', }, body: JSON.stringify({
+                assunto: assunto,
+                mensagem: mensagem,
+                emails: usuarios.map(u => ({email: u.email, name: u.name}))
+            })
+         }); //verificar se é central 1 mesmo
+         const result = await response.json();
+         if (result.success) {
+            Alert.alert('Sucesso!',`Emails enviados para ${result.totalEnviados} pessoas`,
+          [{ text: 'OK', onPress: limparFormulario }]
+         );
+         } else {
+            throw new Error(result.error || 'Erro desconhecido');
+         } 
+        }catch(error){
+            console.error('Erro no envio', error);
+            Alert.alert('Erro', 'Não foi possível enviar os emails. Tente novamente');
+         } finally {
+            setEnviando(false);
+         }
+    };
+    const limparFormulario = () => {
+        setAssunto('');
+        setMensagem('');
+    };
+    const previewEmail = () => {
+        Alert.alert('Preview do email', `Assunto: ${assunto}\n\nMensagem:\n${mensagem}\n\nSerá enviado para: ${totalEmails} pessoas`);
+    };
+    return (
+        <KeyboardAvoidingView>
+            
+        </KeyboardAvoidingView>
+    )
     
   }
-
-}
