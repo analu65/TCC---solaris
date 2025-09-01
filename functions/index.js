@@ -7,7 +7,7 @@ import App from '../App';
 // the environment is set up appropriately
 registerRootComponent(App);
 
-const functions = require("firebase-functions");
-const emailFunctions = require("./email");
+const functions = await import("firebase-functions");
+const emailFunctions = await import("./email");
 
 exports.sendBulkEmails = emailFunctions.sendBulkEmails;
